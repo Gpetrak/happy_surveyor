@@ -31,16 +31,6 @@ Ext.application({
                 /* Base Layers */
                 new OpenLayers.Layer.OSM("OpenStreetMap" ),
                 
-                new OpenLayers.Layer.Google("Google Satellite",
-                    {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22
-                        }
-                ),
-                new OpenLayers.Layer.Google("Google Hybrid",
-                    {type: google.maps.MapTypeId.HYBRID, 
-                     numZoomLevels: 22, 
-                     visibility: false}
-                ),
-
                 /* Data */
                 new OpenLayers.Layer.WMS("Οικισμοί 2000 κάτοικοι",
                     "http://localhost:8080/geoserver/surveying/wms", {
@@ -110,36 +100,6 @@ Ext.application({
 
             ]
         });
-
-        // create our own layer node UI class, using the TreeNodeUIEventMixin
-        //var LayerNodeUI = Ext.extend(GeoExt.tree.LayerNodeUI, new GeoExt.tree.TreeNodeUIEventMixin());
-
-        /*var treeConfig = [
-            {nodeType: 'gx_layercontainer', layerStore: map.layers}
-        {
-            nodeType: "gx_baselayercontainer"
-        }, {
-            nodeType: "gx_overlaylayercontainer",
-            expanded: true,
-            // render the nodes inside this container with a radio button,
-            // and assign them the group "foo".
-            loader: {
-                baseAttrs: {
-                    radioGroup: "foo",
-                    uiProvider: "layernodeui"
-                }
-            }
-        }, {
-            nodeType: "gx_layer",
-            layer: "Tasmania (Group Layer)",
-            isLeaf: false,
-            // create subnodes for the layers in the LAYERS param. If we assign
-            // a loader to a LayerNode and do not provide a loader class, a
-            // LayerParamLoader will be assumed.
-            loader: {
-                param: "LAYERS"
-            }
-        }];*/
 
         var store = Ext.create('Ext.data.TreeStore', {
             model: 'GeoExt.data.LayerTreeModel',
